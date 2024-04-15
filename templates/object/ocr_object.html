@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>基于讯飞开放平台应用</title>
+    <meta name="description" content="简介">
+    <meta name="keywords" content="关键字">
+</head>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }} "></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }} "></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mycss.css') }}"/>
+
+<script>
+$(document).ready(function(){	
+var path=window.location.pathname;
+var regExp=/[\/\.\?]+/;
+str=path.split(regExp);
+var node=str.slice(1);
+$('#'+node+' a').addClass('at');
+$('#'+node).parent().parent().parent().addClass('in');
+})
+</script>
+<body>
+<div class="col-md-2 side-nav">
+    <div class="panel-group" id="accordion">
+        <div class="panel-heading panel">
+            <a class="side-nav-item item-title" href="/">
+                首页
+            </a>
+            <div class="item-body collapse">
+            </div>
+        </div>
+
+        <div class="panel-heading panel">
+            <a data-toggle="collapse" data-parent="#accordion" href="#item-cangku" id="headcangku"
+               class="side-nav-item item-title">
+                图片识别
+            </a>
+            <div id="item-cangku" class="panel-collapse collapse">
+                <div class="item-body">
+                    <ul class="list-unstyled">
+                        <li class="item-second" id='object'><a href="/object">物体识别</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10">
+    <div class="panel panel-primary">
+        <h1 class="panel-heading" style="text-align: center;"><strong> 物体识别综合分析能力演示</strong></h1>
+        <p style="text-align:center">
+            物体识别，采用全球领先的通用物体检测算法，有效检测图像中的动物、交通工具、生活家具等2万多种生活常见物体。 </p>
+        <p style="text-align:center">
+            该能力是通过HTTP API的方式给开发者提供一个通用的接口，适用于一次性交互数据传输的AI服务场景，块式传输。
+        </p>
+        <table class="panel-body ">
+            <tr>
+                <td valign="top" class="col-md-4">
+                    <div class="panel-body">
+                        <!-- Standar Form -->
+                        <h4><strong> 请选择需要物体识别的图片文件</strong></h4>
+                        <input type="file" name="file" id="file" accept=".jpg,.png,.bmp" class="buttodns1"
+                               required>
+
+                        <!-- Drop Zone -->
+                        <h4></h4>
+                        <!--<h4>或者将图片拖拽到这里</h4>-->
+                        <div id="drop-zone" class="form-inline">
+                            <img src="../static/images/default_object.jpg" class="upload-drop-zone" id="img"/>
+                        </div>
+                        <br/>
+                        <div class="form-inline">
+                            <button type="button" class="btn btn-sm btn-primary identifybutton">识别</button>
+                        </div>
+                    </div>
+                </td>
+                <td valign="top" class="col-md-4">
+                    <div class="panel-body ">
+                        <div class="js-upload-finished">
+                            <h4><strong>物体识别结果</strong></h4>
+                            <br/>
+                            <br/>
+                            <div class="list-group" id='divAdd' style="border:1px solid #ddd;min-height: 400px;padding: 8px;">
+                                <a href="#" class="list-group-item list-group-item-success"><span
+                                        class="badge alert-success pull-right"></span>物体</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <p style="color:gray">
+            *图片文件仅支持.jpg/.jpeg/.png/.bmp格式，图片大小不超过800k
+        </p>
+        <p style="color:gray">
+            *请提供清晰的照片
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/object.js') }} "></script>
+
+</body>
+</html>
+
