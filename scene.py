@@ -34,7 +34,7 @@ def clear_scene_pic(file_path=None):
 
 @app.route('/')
 def index():
-    return render_template('scene/home.html')  # send_file('face/home.html')
+    return render_template('scene/index.html')  # send_file('face/home.html')
 
 
 @app.route('/secne')
